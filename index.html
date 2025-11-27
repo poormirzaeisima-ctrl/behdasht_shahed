@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آموزش مانور زلزله - دبیرستان دخترانه شاهد</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background-color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            display: none;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            color: #2980b9;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        /* DCH Section */
+        .dch-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .dch-step {
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .dch-step:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dch-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-left: 20px;
+            flex-shrink: 0;
+        }
+        
+        .dch-content {
+            flex: 1;
+        }
+        
+        .dch-content h3 {
+            color: #2980b9;
+            margin-bottom: 10px;
+        }
+        
+        .dch-image {
+            width: 200px;
+            height: 150px;
+            margin-left: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dch-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Quiz Section */
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .question {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .option {
+            padding: 15px;
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        
+        .option:hover {
+            border-color: #3498db;
+            background-color: #f0f8ff;
+        }
+        
+        .option.selected {
+            border-color: #ff9800;
+            background-color: #fff3e0;
+        }
+        
+        .option.correct {
+            border-color: #2ecc71;
+            background-color: #d5f5e3;
+        }
+        
+        .option.wrong {
+            border-color: #e74c3c;
+            background-color: #fadbd8;
+        }
+        
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Checklist Section */
+        .checklist {
+            list-style-type: none;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: #f8f9fa;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .checklist-item:hover {
+            background-color: #e8f4fc;
+            transform: translateX(5px);
+        }
+        
+        .checklist-item input {
+            margin-left: 15px;
+            transform: scale(1.3);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .dch-step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .dch-icon {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+            
+            .dch-image {
+                margin-left: 0;
+                margin-top: 15px;
+                margin-bottom: 15px;
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>آموزش مانور زلزله</h1>
+            <p class="subtitle">مربی بهداشت دبیرستان دخترانه شاهد</p>
+        </header>
+        
+        <div class="nav-tabs">
+            <button class="tab-btn active" data-tab="intro">مقدمه</button>
+            <button class="tab-btn" data-tab="dch">مراحل DCH</button>
+            <button class="tab-btn" data-tab="quiz">آزمون</button>
+            <button class="tab-btn" data-tab="checklist">چک‌لیست</button>
+        </div>
+        
+        <section id="intro" class="content-section active">
+            <h2>زلزله و اهمیت آمادگی</h2>
+            <p>زلزله یکی از بلایای طبیعی است که ممکن است در هر زمان و مکانی رخ دهد. آمادگی برای مقابله با زلزله می‌تواند جان ما و عزیزانمان را نجات دهد.</p>
+            <p>در این آموزش تعاملی، با روش‌های صحیح مقابله با زلزله در محیط مدرسه آشنا خواهید شد.</p>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <div style="width: 100%; max-width: 500px; height: 300px; background: linear-gradient(45deg, #3498db, #2980b9); border-radius: 10px; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                    ایمنی در برابر زلزله = نجات جان
+                </div>
+            </div>
+            
+            <h3>چرا مانور زلزله مهم است؟</h3>
+            <ul style="padding-right: 20px; margin-top: 15px;">
+                <li style="margin-bottom: 10px;">افزایش آگاهی و آمادگی دانش آموزان</li>
+                <li style="margin-bottom: 10px;">کاهش ترس و اضطراب در مواقع بحرانی</li>
+                <li style="margin-bottom: 10px;">آموزش روش‌های صحیح پناهگیری</li>
+                <li style="margin-bottom: 10px;">آشنایی با نقاط امن در مدرسه</li>
+            </ul>
+        </section>
+        
+        <section id="dch" class="content-section">
+            <h2>مراحل DCH در مانور زلزله</h2>
+            <p>DCH مخفف سه مرحله اصلی در هنگام وقوع زلزله است:</p>
+            
+            <div class="dch-container">
+                <div class="dch-step">
+                    <div class="dch-icon">D</div>
+                    <div class="dch-image">
+                        <img src="file:///D:/%D9%88%D8%A8%20%D8%B3%D8%A7%D8%A8%D8%AA%20%D9%86%D9%88%DB%8C%D8%B3%DB%8C/New%20folder%20(4)/Drop_Cover_Hold_On_ENG_Blue_Orange_RGB.jpg" alt="Drop - خم شوید">
+                    </div>
+                    <div class="dch-content">
+                        <h3>Drop - خم شوید</h3>
+                        <p>بلافاصله پس از احساس لرزش، روی زمین زانو بزنید. این وضعیت شما را از افتادن محافظت می‌کند و امکان حرکت سریع را فراهم می‌سازد.</p>
+                    </div>
+                </div>
+                
+                <div class="dch-step">
+                    <div class="dch-icon">C</div>
+                    <div class="dch-image">
+                        <img src="file:///D:/%D9%88%D8%A8%20%D8%B3%D8%A7%D8%A8%D8%AA%20%D9%86%D9%88%DB%8C%D8%B3%DB%8C/New%20folder%20(4)/Cover.jpg" alt="Cover - پناه بگیرید">
+                    </div>
+                    <div class="dch-content">
+                        <h3>Cover - پناه بگیرید</h3>
+                        <p>خود را زیر یک میز محکم یا نیمکت قرار دهید. اگر میز در دسترس نیست، کنار دیوارهای داخلی و دور از پنجره‌ها و اشیاء سنگین بنشینید و با بازوهایتان از سر و گردنتان محافظت کنید.</p>
+                    </div>
+                </div>
+                
+                <div class="dch-step">
+                    <div class="dch-icon">H</div>
+                    <div class="dch-image">
+                        <img src="file:///D:/%D9%88%D8%A8%20%D8%B3%D8%A7%D8%A8%D8%AA%20%D9%86%D9%88%DB%8C%D8%B3%DB%8C/New%20folder%20(4)/Hold_On.jpg" alt="Hold on - محکم بگیرید">
+                    </div>
+                    <div class="dch-content">
+                        <h3>Hold on - محکم بگیرید</h3>
+                        <p>تا پایان لرزش‌ها، محکم به پایه میز یا نیمکت چنگ بزنید. اگر پناهگاه شما جابجا شود، شما هم با آن حرکت خواهید کرد.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; text-align: center;">
+                <h3>تمرین عملی DCH</h3>
+                <p style="margin: 15px 0;">اکنون می‌توانید مراحل DCH را به صورت عملی تمرین کنید:</p>
+                <button id="practice-dch" class="sim-btn" style="padding: 12px 25px; background: linear-gradient(45deg, #3498db, #2980b9); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                    شروع تمرین DCH
+                </button>
+                <div id="practice-instructions" style="margin-top: 20px; padding: 15px; background-color: #e8f4fc; border-radius: 8px; display: none;">
+                    <p id="practice-step" style="font-weight: bold; color: #2980b9;"></p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="quiz" class="content-section">
+            <h2>آزمون آشنایی با مانور زلزله</h2>
+            <p>پس از مطالعه مطالب، دانش خود را با این آزمون بسنجید.</p>
+            
+            <div class="quiz-container">
+                <div class="question" id="question-1">
+                    <h3>سوال ۱: هنگام وقوع زلزله در کلاس درس، بهترین کار چیست؟</h3>
+                    <div class="options">
+                        <div class="option" data-correct="true">پناهگیری زیر میز و محافظت از سر و گردن</div>
+                        <div class="option" data-correct="false">فرار سریع از کلاس</div>
+                        <div class="option" data-correct="false">ایستادن در کنار پنجره</div>
+                        <div class="option" data-correct="false">استفاده از آسانسور برای خروج</div>
+                    </div>
+                </div>
+                
+                <div class="question" id="question-2">
+                    <h3>سوال ۲: پس از پایان لرزه‌های زلزله، چه کاری باید انجام دهید؟</h3>
+                    <div class="options">
+                        <div class="option" data-correct="false">بلافاصله به کلاس برگردید</div>
+                        <div class="option" data-correct="true">با آرامش و به ترتیب از ساختمان خارج شوید</div>
+                        <div class="option" data-correct="false">برای بازیابی وسایل شخصی به کلاس برگردید</div>
+                        <div class="option" data-correct="false">در محل خود بمانید و منتظر کمک باشید</div>
+                    </div>
+                </div>
+                
+                <div class="question" id="question-3">
+                    <h3>سوال ۳: کدام یک از مکان‌های زیر برای پناهگیری در زلزله ایمن نیست؟</h3>
+                    <div class="options">
+                        <div class="option" data-correct="false">زیر میزهای محکم</div>
+                        <div class="option" data-correct="false">کنار دیوارهای داخلی</div>
+                        <div class="option" data-correct="true">کنار پنجره‌ها و قفسه‌های کتاب</div>
+                        <div class="option" data-correct="false">زیر چارچوب درب</div>
+                    </div>
+                </div>
+                
+                <div class="result" id="quiz-result"></div>
+                <button class="sim-btn" id="check-answers" style="margin: 20px auto; display: block; padding: 12px 25px; background: linear-gradient(45deg, #3498db, #2980b9); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                    بررسی پاسخ‌ها
+                </button>
+            </div>
+        </section>
+        
+        <section id="checklist" class="content-section">
+            <h2>چک‌لیست آمادگی برای زلزله</h2>
+            <p>این چک‌لیست را بررسی کنید تا از آمادگی خود اطمینان حاصل کنید.</p>
+            
+            <ul class="checklist">
+                <li class="checklist-item">
+                    <input type="checkbox" id="item1">
+                    <label for="item1">نقاط ایمن در کلاس و مدرسه را می‌شناسم</label>
+                </li>
+                <li class="checklist-item">
+                    <input type="checkbox" id="item2">
+                    <label for="item2">مسیرهای خروج اضطراری را می‌شناسم</label>
+                </li>
+                <li class="checklist-item">
+                    <input type="checkbox" id="item3">
+                    <label for="item3">می‌دانم در هنگام زلزله چگونه از سر و گردنم محافظت کنم</label>
+                </li>
+                <li class="checklist-item">
+                    <input type="checkbox" id="item4">
+                    <label for="item4">می‌دانم پس از زلزله در کدام نقطه از حیاط مدرسه تجمع کنم</label>
+                </li>
+                <li class="checklist-item">
+                    <input type="checkbox" id="item5">
+                    <label for="item5">می‌دانم که در هنگام زلزله نباید از آسانسور استفاده کنم</label>
+                </li>
+                <li class="checklist-item">
+                    <input type="checkbox" id="item6">
+                    <label for="item6">می‌دانم که حفظ آرامش در حین زلزله بسیار مهم است</label>
+                </li>
+            </ul>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="sim-btn" id="reset-checklist" style="padding: 12px 25px; background: linear-gradient(45deg, #3498db, #2980b9); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;">
+                    بازنشانی چک‌لیست
+                </button>
+            </div>
+        </section>
+        
+        <footer>
+            <p>تهیه شده توسط مربی بهداشت دبیرستان دخترانه شاهد - آموزش مانور زلزله</p>
+            <p>© 2023 - تمامی حقوق محفوظ است</p>
+        </footer>
+    </div>
+
+    <script>
+        // Tab Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons and sections
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    contentSections.forEach(section => section.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    // Show corresponding section
+                    const tabId = btn.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // DCH Practice Setup
+            setupDCHPractice();
+            
+            // Quiz Setup
+            setupQuiz();
+            
+            // Checklist Setup
+            setupChecklist();
+        });
+        
+        // DCH Practice Functions
+        function setupDCHPractice() {
+            const practiceBtn = document.getElementById('practice-dch');
+            const instructions = document.getElementById('practice-instructions');
+            const practiceStep = document.getElementById('practice-step');
+            
+            let currentStep = 0;
+            const steps = [
+                "خم شوید: روی زمین زانو بزنید",
+                "پناه بگیرید: زیر میز محکم قرار بگیرید و با دستان خود از سر و گردنتان محافظت کنید",
+                "محکم بگیرید: تا پایان لرزش‌ها پایه میز را محکم نگه دارید"
+            ];
+            
+            practiceBtn.addEventListener('click', function() {
+                instructions.style.display = 'block';
+                
+                if (currentStep < steps.length) {
+                    practiceStep.textContent = steps[currentStep];
+                    currentStep++;
+                    
+                    if (currentStep === steps.length) {
+                        practiceBtn.textContent = "شروع مجدد تمرین";
+                    }
+                } else {
+                    // Reset practice
+                    currentStep = 0;
+                    practiceBtn.textContent = "شروع تمرین DCH";
+                    instructions.style.display = 'none';
+                }
+            });
+        }
+        
+        // Quiz Functions
+        function setupQuiz() {
+            const checkAnswersBtn = document.getElementById('check-answers');
+            const options = document.querySelectorAll('.option');
+            const result = document.getElementById('quiz-result');
+            
+            // Add click event to options
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options in this question
+                    const question = this.closest('.question');
+                    const questionOptions = question.querySelectorAll('.option');
+                    questionOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                });
+            });
+            
+            checkAnswersBtn.addEventListener('click', function() {
+                let correctCount = 0;
+                let totalQuestions = 3;
+                
+                // Check each question
+                for (let i = 1; i <= totalQuestions; i++) {
+                    const question = document.getElementById(`question-${i}`);
+                    const selectedOption = question.querySelector('.option.selected');
+                    
+                    if (selectedOption) {
+                        const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+                        
+                        if (isCorrect) {
+                            correctCount++;
+                            selectedOption.classList.add('correct');
+                        } else {
+                            selectedOption.classList.add('wrong');
+                            
+                            // Show correct answer
+                            const correctOption = question.querySelector('.option[data-correct="true"]');
+                            correctOption.classList.add('correct');
+                        }
+                    }
+                }
+                
+                // Show result
+                const percentage = (correctCount / totalQuestions) * 100;
+                result.textContent = `نتیجه: ${correctCount} از ${totalQuestions} سوال صحیح پاسخ داده شد (${percentage}%)`;
+                
+                if (percentage >= 70) {
+                    result.style.color = '#2ecc71';
+                } else {
+                    result.style.color = '#e74c3c';
+                }
+            });
+        }
+        
+        // Checklist Functions
+        function setupChecklist() {
+            const resetChecklistBtn = document.getElementById('reset-checklist');
+            const checkboxes = document.querySelectorAll('.checklist-item input');
+            
+            resetChecklistBtn.addEventListener('click', function() {
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+            });
+        }
+    </script>
+</body>
+</html>
